@@ -6,7 +6,10 @@
       "Bash(bun lint:*)",
       "Bash(tree:*)",
       "Bash(ls:*)",
-      "Bash(bun dev)"
+      "Bash(bun dev)",
+      "Bash(mkdir:*)",
+      "Bash(bun run build:*)",
+      "Bash(lsof:*)"
     ]
   },
   "enableAllProjectMcpServers": true,

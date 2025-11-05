@@ -1,10 +1,10 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { ModeToggle } from "@/components/mode-toggle"
 import { siteConfig } from "@/config/site"
+import { Button } from "@/components/ui/button"
 import { Github } from "lucide-react"
+import { ModeToggle } from "@/components/mode-toggle"
 
-export function Header() {
+export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto flex h-14 w-full max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
