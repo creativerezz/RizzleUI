@@ -42,15 +42,14 @@ export default function PlaygroundPage() {
       <SiteHeader />
       <div className="flex h-full flex-1 flex-col">
         <div className="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-start justify-between gap-2 py-4 sm:flex-row sm:items-center sm:gap-0 md:h-16">
-            <h2 className="text-lg font-semibold">Playground</h2>
-            <div className="ml-auto flex w-full gap-2 sm:justify-end sm:w-auto">
+          <div className="flex items-center justify-between gap-4 py-4 md:h-16">
+            <div className="flex flex-1 items-center gap-2">
               <PresetSelector presets={presets} />
               <PresetSave />
-              <div className="hidden gap-2 md:flex">
-                <CodeViewer />
-                <PresetShare />
-              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <CodeViewer />
+              <PresetShare />
               <PresetActions />
             </div>
           </div>
