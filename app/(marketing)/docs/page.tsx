@@ -5,10 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
+import { CodeBlock } from "@/components/ui/code-block";
 
 export default function DocsPage() {
   return (
-    <div className="prose prose-neutral dark:prose-invert max-w-none">
+    <div className="prose prose-neutral dark:prose-invert max-w-4xl mx-auto prose-lg prose-headings:scroll-mt-20 prose-headings:font-bold prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-p:leading-relaxed prose-p:mb-6 prose-li:my-2 prose-pre:bg-muted prose-pre:border prose-pre:border-border prose-code:text-sm prose-code:font-mono prose-a:font-medium prose-a:text-foreground prose-a:underline prose-a:underline-offset-4 hover:prose-a:text-primary">
       {/* Hero Section */}
       <div className="not-prose mb-12">
         <Badge variant="outline" className="mb-4">
@@ -64,7 +65,7 @@ export default function DocsPage() {
       </div>
 
       {/* Introduction */}
-      <section id="introduction" className="mb-12 scroll-mt-20">
+      <section id="introduction" className="mb-16 scroll-mt-20">
         <h2>Introduction</h2>
         <p>
           This starter template is built with the latest web technologies to help you
@@ -81,7 +82,7 @@ export default function DocsPage() {
       </section>
 
       {/* Philosophy */}
-      <section id="philosophy" className="mb-12 scroll-mt-20">
+      <section id="philosophy" className="mb-16 scroll-mt-20">
         <h2>Philosophy</h2>
         <p>This starter follows key principles to ensure code quality and maintainability:</p>
         <ul>
@@ -94,7 +95,7 @@ export default function DocsPage() {
       </section>
 
       {/* Tech Stack */}
-      <section id="tech-stack" className="mb-12 scroll-mt-20">
+      <section id="tech-stack" className="mb-16 scroll-mt-20">
         <h2>Tech Stack</h2>
 
         <h3>Core Framework</h3>
@@ -121,27 +122,27 @@ export default function DocsPage() {
       </section>
 
       {/* Getting Started */}
-      <section id="getting-started" className="mb-12 scroll-mt-20">
+      <section id="getting-started" className="mb-16 scroll-mt-20">
         <h2>Getting Started</h2>
 
         <h3>Prerequisites</h3>
         <p>Make sure you have Bun installed on your system:</p>
-        <pre><code>curl -fsSL https://bun.sh/install | bash</code></pre>
+        <CodeBlock code="curl -fsSL https://bun.sh/install | bash" language="bash" />
 
         <h3>Installation</h3>
         <p>Clone and install dependencies:</p>
-        <pre><code>{`git clone <your-repo>
+        <CodeBlock code={`git clone <your-repo>
 cd next16
-bun install`}</code></pre>
+bun install`} language="bash" />
 
         <h3>Development</h3>
         <p>Start the development server with Turbopack:</p>
-        <pre><code>bun dev</code></pre>
-        <p>Open <Link href="http://localhost:3000" className="font-medium text-foreground underline underline-offset-4 hover:text-primary">http://localhost:3000</Link> in your browser.</p>
+        <CodeBlock code="bun dev" language="bash" />
+        <p>Open <Link href="http://localhost:3000">http://localhost:3000</Link> in your browser.</p>
 
         <h3>Build for Production</h3>
-        <pre><code>{`bun build
-bun start`}</code></pre>
+        <CodeBlock code={`bun build
+bun start`} language="bash" />
 
         <Alert className="not-prose my-6" variant="default">
           <AlertTitle>Important: Use Bun</AlertTitle>
@@ -153,67 +154,67 @@ bun start`}</code></pre>
       </section>
 
       {/* Development Workflow */}
-      <section id="workflow" className="mb-12 scroll-mt-20">
+      <section id="workflow" className="mb-16 scroll-mt-20">
         <h2>Development Workflow</h2>
 
         <h3>Adding shadcn/ui Components</h3>
         <p>Use the shadcn CLI to add components:</p>
-        <pre><code>bunx shadcn@latest add button</code></pre>
-        <p>Components are installed to <code>components/ui/</code> and can be imported:</p>
-        <pre><code>{`import { Button } from "@/components/ui/button"`}</code></pre>
+        <CodeBlock code="bunx shadcn@latest add button" language="bash" />
+        <p>Components are installed to <code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">components/ui/</code> and can be imported:</p>
+        <CodeBlock code={`import { Button } from "@/components/ui/button"`} language="typescript" />
 
         <h3>Server vs Client Components</h3>
         <p>Use Server Components by default:</p>
-        <pre><code>{`// Server Component (default)
+        <CodeBlock code={`// Server Component (default)
 export function StaticContent() {
   return <div>Static content</div>
-}`}</code></pre>
-        <p>Add <code>&quot;use client&quot;</code> only when needed:</p>
-        <pre><code>{`"use client"
+}`} language="typescript" />
+        <p>Add <code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">&quot;use client&quot;</code> only when needed:</p>
+        <CodeBlock code={`"use client"
 
 import { useState } from "react"
 
 export function InteractiveContent() {
   const [count, setCount] = useState(0)
   return <button onClick={() => setCount(count + 1)}>{count}</button>
-}`}</code></pre>
+}`} language="tsx" />
 
         <h3>Async APIs in Next.js 16</h3>
         <p>Remember that cookies, headers, and params are now async:</p>
-        <pre><code>{`// ✅ Next.js 16 (correct)
+        <CodeBlock code={`// ✅ Next.js 16 (correct)
 const cookieStore = await cookies()
 const headersList = await headers()
 
 // ❌ Next.js 15 syntax (doesn't work in v16)
 const cookieStore = cookies()
-const headersList = headers()`}</code></pre>
+const headersList = headers()`} language="typescript" />
       </section>
 
       {/* Configuration */}
-      <section id="configuration" className="mb-12 scroll-mt-20">
+      <section id="configuration" className="mb-16 scroll-mt-20">
         <h2>Environment & Configuration</h2>
 
         <h3>Environment Variables</h3>
-        <p>Create a <code>.env.local</code> file in the root directory:</p>
-        <pre><code>{`# Example environment variables
+        <p>Create a <code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">.env.local</code> file in the root directory:</p>
+        <CodeBlock code={`# Example environment variables
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 DATABASE_URL=your-database-url
-OPENAI_API_KEY=your-api-key`}</code></pre>
+OPENAI_API_KEY=your-api-key`} language="bash" />
 
         <h3>Path Aliases</h3>
-        <p>The project uses TypeScript path aliases configured in <code>tsconfig.json</code>:</p>
+        <p>The project uses TypeScript path aliases configured in <code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">tsconfig.json</code>:</p>
         <ul>
-          <li><code>@/components</code> - React components</li>
-          <li><code>@/components/ui</code> - shadcn/ui components</li>
-          <li><code>@/lib</code> - Utility functions</li>
-          <li><code>@/hooks</code> - Custom React hooks</li>
+          <li><code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">@/components</code> - React components</li>
+          <li><code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">@/components/ui</code> - shadcn/ui components</li>
+          <li><code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">@/lib</code> - Utility functions</li>
+          <li><code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">@/hooks</code> - Custom React hooks</li>
         </ul>
       </section>
 
       {/* Project Structure */}
-      <section id="structure" className="mb-12 scroll-mt-20">
+      <section id="structure" className="mb-16 scroll-mt-20">
         <h2>Project Structure</h2>
-        <pre><code>{`next16/
+        <CodeBlock code={`next16/
 ├── app/                    # App Router pages and layouts
 │   ├── (marketing)/        # Marketing route group
 │   │   ├── page.tsx        # Home page
@@ -229,111 +230,113 @@ OPENAI_API_KEY=your-api-key`}</code></pre>
 ├── components.json         # shadcn/ui configuration
 ├── next.config.ts          # Next.js configuration
 ├── tsconfig.json           # TypeScript configuration
-└── package.json            # Dependencies and scripts`}</code></pre>
+└── package.json            # Dependencies and scripts`} language="bash" />
       </section>
 
       {/* UI & Styling */}
-      <section id="styling" className="mb-12 scroll-mt-20">
+      <section id="styling" className="mb-16 scroll-mt-20">
         <h2>UI & Styling</h2>
 
         <h3>Theme Tokens</h3>
         <p><strong>Always use theme tokens, never hardcoded colors:</strong></p>
-        <pre><code>{`// ✅ Good - Uses theme tokens
+        <CodeBlock code={`// ✅ Good - Uses theme tokens
 <div className="bg-background text-foreground">
 <button className="bg-primary text-primary-foreground hover:bg-primary/90">
 
 // ❌ Bad - Hardcoded colors
 <div className="bg-white dark:bg-black text-black dark:text-white">
-<button className="bg-blue-500 hover:bg-blue-600">`}</code></pre>
+<button className="bg-blue-500 hover:bg-blue-600">`} language="tsx" />
 
         <h3>Available Theme Tokens</h3>
         <ul>
-          <li><code>bg-background</code> / <code>text-foreground</code> - Main background and text</li>
-          <li><code>bg-card</code> / <code>text-card-foreground</code> - Card backgrounds</li>
-          <li><code>bg-primary</code> / <code>text-primary-foreground</code> - Primary buttons</li>
-          <li><code>bg-secondary</code> / <code>text-secondary-foreground</code> - Secondary buttons</li>
-          <li><code>text-muted-foreground</code> - Secondary/muted text</li>
-          <li><code>border-border</code> - Default borders</li>
+          <li><code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">bg-background</code> / <code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">text-foreground</code> - Main background and text</li>
+          <li><code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">bg-card</code> / <code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">text-card-foreground</code> - Card backgrounds</li>
+          <li><code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">bg-primary</code> / <code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">text-primary-foreground</code> - Primary buttons</li>
+          <li><code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">bg-secondary</code> / <code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">text-secondary-foreground</code> - Secondary buttons</li>
+          <li><code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">text-muted-foreground</code> - Secondary/muted text</li>
+          <li><code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">border-border</code> - Default borders</li>
         </ul>
 
         <h3>Responsive Padding Pattern</h3>
         <p>Use consistent responsive padding:</p>
-        <pre><code>{`// ✅ Good
+        <CodeBlock code={`// ✅ Good
 <div className="px-4 sm:px-6 lg:px-8">
 
 // ❌ Bad - Inconsistent padding
-<div className="px-16">`}</code></pre>
+<div className="px-16">`} language="tsx" />
 
         <h3>Conditional Classes</h3>
-        <p>Always use the <code>cn()</code> utility:</p>
-        <pre><code>{`import { cn } from "@/lib/utils"
+        <p>Always use the <code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">cn()</code> utility:</p>
+        <CodeBlock code={`import { cn } from "@/lib/utils"
 
 <div className={cn(
   "base-classes",
   isActive && "active-classes",
   className
-)}>`}</code></pre>
+)}>`} language="tsx" />
       </section>
 
       {/* Scripts & Tooling */}
-      <section id="tooling" className="mb-12 scroll-mt-20">
+      <section id="tooling" className="mb-16 scroll-mt-20">
         <h2>Scripts & Tooling</h2>
 
         <h3>Available Scripts</h3>
         <ul>
-          <li><code>bun dev</code> - Start development server with Turbopack</li>
-          <li><code>bun build</code> - Build for production</li>
-          <li><code>bun start</code> - Start production server</li>
-          <li><code>bun lint</code> - Run ESLint</li>
+          <li><code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">bun dev</code> - Start development server with Turbopack</li>
+          <li><code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">bun build</code> - Build for production</li>
+          <li><code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">bun start</code> - Start production server</li>
+          <li><code className="px-1.5 py-0.5 rounded bg-muted border border-border text-sm">bun lint</code> - Run ESLint</li>
         </ul>
 
         <h3>Adding Dependencies</h3>
-        <pre><code>{`bun add <package>           # Production dependency
+        <CodeBlock code={`bun add <package>           # Production dependency
 bun add -d <package>        # Development dependency
-bun remove <package>        # Remove dependency`}</code></pre>
+bun remove <package>        # Remove dependency`} language="bash" />
       </section>
 
       {/* Next Steps */}
-      <div className="not-prose mt-16 overflow-hidden rounded-xl border border-border bg-gradient-to-br from-card to-muted/20 p-8 shadow-lg">
-        <div className="flex items-start gap-4">
-          <div className="flex-shrink-0">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-              <Rocket className="h-6 w-6 text-primary" />
-            </div>
-          </div>
-          <div className="flex-1">
-            <h3 className="mb-2 text-2xl font-bold tracking-tight text-foreground">
-              Ready to build?
-            </h3>
-            <p className="mb-6 text-base text-muted-foreground">
-              Check out the LLMS folder for detailed patterns and examples on forms,
-              authentication, layouts, and AI integration.
-            </p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Button size="lg" asChild>
-                <Link href="/">
-                  Back to Home
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link
-                  href="https://nextjs.org/docs"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Next.js Docs
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link
-                  href="https://ui.shadcn.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  shadcn/ui Docs
-                </Link>
-              </Button>
+      <div className="not-prose mt-20">
+        <div className="overflow-hidden rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 via-card to-secondary/5 shadow-xl">
+          <div className="p-8 md:p-10">
+            <div className="flex flex-col items-center text-center">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary shadow-lg shadow-primary/20">
+                <Rocket className="h-8 w-8 text-primary-foreground" />
+              </div>
+              <h3 className="mb-3 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+                Ready to build something amazing?
+              </h3>
+              <p className="mb-8 max-w-2xl text-lg text-muted-foreground">
+                Explore the LLMS folder for detailed patterns and examples on forms,
+                authentication, layouts, and AI integration. Everything you need to ship fast.
+              </p>
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <Button size="lg" className="min-w-[160px] shadow-lg shadow-primary/20" asChild>
+                  <Link href="/">
+                    <ArrowRight className="mr-2 h-5 w-5" />
+                    Get Started
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="min-w-[160px]" asChild>
+                  <Link
+                    href="https://nextjs.org/docs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Code2 className="mr-2 h-4 w-4" />
+                    Next.js Docs
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="min-w-[160px]" asChild>
+                  <Link
+                    href="https://ui.shadcn.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Palette className="mr-2 h-4 w-4" />
+                    shadcn/ui
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>

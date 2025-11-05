@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { ExternalLink, Rocket } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -90,6 +91,34 @@ export default function DocsLayout({
                   </ul>
                 </div>
               ))}
+
+              <Separator />
+
+              {/* CTA Section */}
+              <div className="space-y-3 rounded-lg border border-primary/20 bg-gradient-to-br from-primary/5 to-secondary/5 p-4">
+                <div className="flex items-center gap-2">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
+                    <Rocket className="h-4 w-4 text-primary" />
+                  </div>
+                  <p className="text-sm font-semibold text-foreground">Ready to build?</p>
+                </div>
+                <p className="text-xs text-muted-foreground">
+                  Start building with Next.js 16 and shadcn/ui.
+                </p>
+                <div className="space-y-2">
+                  <Button size="sm" className="w-full" asChild>
+                    <Link href="/">
+                      Get Started
+                    </Link>
+                  </Button>
+                  <Button size="sm" variant="outline" className="w-full" asChild>
+                    <Link href="https://ui.shadcn.com" target="_blank" rel="noopener noreferrer">
+                      Components
+                      <ExternalLink className="ml-2 h-3 w-3" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
               </div>
             </ScrollArea>
           </div>

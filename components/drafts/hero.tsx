@@ -18,7 +18,7 @@ const Hero = () => (
 						Write. Refine. Publish.
 					</h1>
 					<p className="text-muted-foreground mx-auto mb-7 mt-3 max-w-xl text-balance text-xl">
-						Write poetry and stories with the world's first AI poetry muse.
+						Write poetry and stories with the worlds first AI poetry muse.
 					</p>
 					<div className="mx-auto w-full max-w-xl">
 						<form className="bg-card ring-border-illustration w-full divide-y overflow-hidden rounded-xl shadow-md ring-1 relative">
