@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+//import { WritingPromptHero } from "@/components/drafts/writing-prompt-hero";
 
 export default function Home() {
   return (
+    <>
     <section className="flex min-h-[calc(100vh-3.5rem)] items-center justify-center">
       <div className="container max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center space-y-8">
@@ -15,8 +17,8 @@ export default function Home() {
           {/* Main Heading */}
           <div className="space-y-4 max-w-4xl">
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
-              Beautiful UI Components
-              <span className="block text-primary">Built with RizzleUI</span>
+              Beautiful and Functional
+              <span className="block text-primary">UI Components Library</span>
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground sm:text-xl">
               A modern UI component library and design system built with Next.js 16, React 19, and shadcn/ui.
@@ -27,13 +29,13 @@ export default function Home() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <Button size="lg" className="text-base" asChild>
-              <Link href="#get-started">
+              <Link href="/components">
                 Get Started
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="text-base" asChild>
-              <Link href="#learn-more">
+              <Link href="/docs">
                 Learn More
               </Link>
             </Button>
@@ -60,8 +62,14 @@ export default function Home() {
               </p>
             </div>
           </div>
+          
         </div>
+
       </div>
     </section>
+
+    {/* Writing Prompt Hero Demo */}
+    {/* <WritingPromptHero /> */}
+    </>
   );
 }
