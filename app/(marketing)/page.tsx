@@ -15,12 +15,12 @@ export default function Home() {
           {/* Main Heading */}
           <div className="space-y-4 max-w-4xl">
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
-              Build Something
-              <span className="block text-primary">Amazing Today</span>
+              Beautiful UI Components
+              <span className="block text-primary">Built with RizzleUI</span>
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground sm:text-xl">
-              Start your next project with Next.js 16, React 19, and shadcn/ui.
-              Fast, modern, and ready for production.
+              A modern UI component library and design system built with Next.js 16, React 19, and shadcn/ui.
+              Fast, accessible, and customizable.
             </p>
           </div>
 
