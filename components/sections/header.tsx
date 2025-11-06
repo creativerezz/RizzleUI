@@ -47,6 +47,12 @@ export function Header() {
               Docs
             </Link>
             <Link
+              href="/components"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Components
+            </Link>
+            <Link
               href="/playground"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
