@@ -29,7 +29,7 @@ export function WritingPromptHero() {
   };
 
   return (
-    <main role="main" className="overflow-hidden bg-background">
+    <main role="main" className="overflow-hidden rounded-[calc(0.75rem-0.25rem)] bg-background">
       <section className="relative py-32 md:py-44 lg:py-52">
         <div className="relative z-30 mx-auto max-w-5xl px-6 text-center">
           <h1 className="mx-auto max-w-3xl text-balance text-4xl font-semibold sm:text-5xl text-foreground">
@@ -42,7 +42,7 @@ export function WritingPromptHero() {
           <div className="mx-auto w-full max-w-xl">
             <form
               onSubmit={handleSubmit}
-              className="relative w-full divide-y overflow-hidden rounded-xl bg-card shadow-md ring-1 ring-border"
+              className="relative w-full divide-y overflow-hidden rounded-[calc(0.75rem-0.25rem)] bg-card shadow-md ring-1 ring-foreground/20"
             >
               <Textarea
                 name="message"

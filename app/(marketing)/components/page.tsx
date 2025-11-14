@@ -94,7 +94,7 @@ export default function ComponentsPage() {
             <Badge>New</Badge>
           </div>
 
-          <div className="rounded-xl border border-border bg-card/50 p-1">
+          <div className="rounded-xl border border-foreground/20 bg-card/50 p-1">
             <WritingPromptHero />
           </div>
 
