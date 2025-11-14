@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
 import { siteConfig } from "@/config/site"
-import { SiteHeader } from "@/components/site-header"
 
 import { CodeViewer } from "./components/code-viewer"
 import { MaxLengthSelector } from "./components/maxlength-selector"
@@ -38,9 +37,7 @@ export const metadata: Metadata = {
 
 export default function PlaygroundPage() {
   return (
-    <>
-      <SiteHeader />
-      <div className="flex h-full flex-1 flex-col">
+    <div className="flex h-full flex-1 flex-col">
         <div className="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-4 py-4 md:h-16">
             <div className="flex flex-1 items-center gap-2">
@@ -312,7 +309,6 @@ export default function PlaygroundPage() {
           </div>
         </div>
       </Tabs>
-      </div>
-    </>
+    </div>
   )
 }

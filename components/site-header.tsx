@@ -4,11 +4,16 @@ import { Button } from "@/components/ui/button"
 import { Github } from "lucide-react"
 import { ModeToggle } from "@/components/mode-toggle"
 
-export function SiteHeader() {
+interface SiteHeaderProps {
+  startContent?: React.ReactNode
+}
+
+export function SiteHeader({ startContent }: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto flex h-14 w-full max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2">
+          {startContent}
           <Link href="/" className="flex items-center space-x-2">
             <svg
               className="h-6 w-6"

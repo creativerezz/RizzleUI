@@ -53,7 +53,7 @@ export default function DocsLayout({
   const flatNav = docsNavigation.flatMap((group) => group.items);
 
   return (
-    <div className="bg-background">
+    <div className="bg-background -mt-8 sm:-mt-12 lg:-mt-16">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-10 md:flex-row md:px-6 lg:px-8">
         <aside className="hidden w-64 shrink-0 md:block">
           <div className="sticky top-20">

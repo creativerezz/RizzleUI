@@ -17,8 +17,8 @@ export default function Home() {
           {/* Main Heading */}
           <div className="space-y-4 max-w-4xl">
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
-              Beautiful and Functional
-              <span className="block text-primary">UI Components Library</span>
+            Beautiful and Functional
+            <span className="block text-primary">UI Components Library</span>
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground sm:text-xl">
               A modern UI component library and design system built with Next.js 16, React 19, and shadcn/ui.
@@ -41,27 +41,27 @@ export default function Home() {
             </Button>
           </div>
 
-          {/* Optional: Feature highlights */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-12 max-w-3xl">
-            <div className="space-y-2">
-              <h3 className="font-semibold text-foreground">Lightning Fast</h3>
-              <p className="text-sm text-muted-foreground">
-                Built with Turbopack for instant updates
-              </p>
-            </div>
-            <div className="space-y-2">
-              <h3 className="font-semibold text-foreground">Type Safe</h3>
-              <p className="text-sm text-muted-foreground">
-                Full TypeScript support out of the box
-              </p>
-            </div>
-            <div className="space-y-2">
-              <h3 className="font-semibold text-foreground">Dark Mode</h3>
-              <p className="text-sm text-muted-foreground">
-                Beautiful themes that adapt to your preference
-              </p>
-            </div>
+        {/* Optional: Feature highlights */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto mt-12">
+          <div className="space-y-2">
+            <h3 className="font-semibold text-foreground">Lightning Fast</h3>
+            <p className="text-sm text-muted-foreground">
+              Built with Turbopack for instant updates
+            </p>
           </div>
+          <div className="space-y-2">
+            <h3 className="font-semibold text-foreground">Type Safe</h3>
+            <p className="text-sm text-muted-foreground">
+              Full TypeScript support out of the box
+            </p>
+          </div>
+          <div className="space-y-2">
+            <h3 className="font-semibold text-foreground">Dark Mode</h3>
+            <p className="text-sm text-muted-foreground">
+              Beautiful themes that adapt to your preference
+            </p>
+          </div>
+        </div>
           
         </div>
 
@@ -71,5 +71,5 @@ export default function Home() {
     {/* Writing Prompt Hero Demo */}
     {/* <WritingPromptHero /> */}
     </>
-  );
+  )
 }
