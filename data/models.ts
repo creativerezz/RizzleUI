@@ -73,3 +73,4 @@ export const models: Model<ModelType>[] = [
       "Real-time applications where low-latency is preferable. Good at code generation and completion.",
   },
 ]
+

@@ -25,7 +25,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-import { Model, ModelType } from "../data/models"
+import { Model, ModelType } from "@/data/models"
 
 interface ModelSelectorProps {
   types: readonly ModelType[]
@@ -158,3 +158,4 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
     </CommandItem>
   )
 }
+

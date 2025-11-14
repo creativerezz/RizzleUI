@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RizzleUI
+
+A modern UI component library and design system built with Next.js 16, React 19, and shadcn/ui.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- [Bun](https://bun.sh) installed on your system
+- Node.js 18+ (for compatibility)
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+git clone <your-repo-url>
+cd RizzleUI
+```
+
+2. Install dependencies:
+```bash
+bun install
+```
+
+3. Set up environment variables:
+```bash
+cp .env.example .env
+```
+
+4. Add your OpenAI API key to `.env`:
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+5. Start the development server:
+```bash
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## LLM Provider Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project uses the Vercel AI SDK for LLM integration. Currently configured for OpenAI.
+
+### OpenAI Setup
+
+1. Get your API key from [OpenAI Platform](https://platform.openai.com/api-keys)
+2. Add it to your `.env` file:
+```env
+OPENAI_API_KEY=sk-...
+```
+
+### Supported Models
+
+- `gpt-4o` - Latest and most capable model
+- `gpt-4o-mini` - Faster and cheaper (default)
+- `gpt-4-turbo` - Previous generation
+- `gpt-4` - Standard GPT-4
+- `gpt-3.5-turbo` - Fast and cost-effective
+
+### Adding Other Providers
+
+To add Anthropic or Google providers:
+
+1. Install the provider package:
+```bash
+bun add @ai-sdk/anthropic  # or @ai-sdk/google
+```
+
+2. Add the API key to `.env`:
+```env
+ANTHROPIC_API_KEY=your_key_here
+# or
+GOOGLE_GENERATIVE_AI_API_KEY=your_key_here
+```
+
+3. Update `lib/llm-provider.ts` to uncomment the provider code.
+
+## Features
+
+- 🎨 **shadcn/ui Components** - Beautiful, accessible UI components
+- 🤖 **AI Chat Integration** - YouTube transcript analysis with AI
+- 📱 **Responsive Design** - Mobile-first approach
+- 🌙 **Dark Mode** - Built-in theme support
+- ⚡ **Turbopack** - Fast development builds
+- 🔥 **Next.js 16** - Latest App Router features
+
+## Project Structure
+
+```
+├── app/                    # Next.js App Router
+│   ├── api/               # API routes
+│   ├── (marketing)/       # Marketing pages
+│   └── youtube/           # YouTube transcript fetcher
+├── components/            # React components
+│   ├── ui/                # shadcn/ui components
+│   └── youtube/           # YouTube-specific components
+├── lib/                   # Utility functions
+│   ├── llm-provider.ts    # LLM provider configuration
+│   └── youtube-api.ts     # YouTube API client
+└── data/                  # Static data
+```
+
+## Development
+
+### Available Scripts
+
+- `bun dev` - Start development server with Turbopack
+- `bun build` - Build for production
+- `bun start` - Start production server
+- `bun lint` - Run ESLint
+
+### Code Style
+
+This project follows strict development guidelines:
+- Use theme tokens, never hardcoded colors
+- Mobile-first responsive design
+- Server Components by default
+- TypeScript for all components
+
+See `.cursorrules` for complete guidelines.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Documentation](https://nextjs.org/docs)
+- [shadcn/ui Documentation](https://ui.shadcn.com)
+- [Vercel AI SDK](https://sdk.vercel.ai/docs)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT

@@ -10,11 +10,11 @@ import {
 import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
 
-interface TopPSelectorProps {
+interface MaxLengthSelectorProps {
   defaultValue: number[]
 }
 
-export function TopPSelector({ defaultValue }: TopPSelectorProps) {
+export function MaxLengthSelector({ defaultValue }: MaxLengthSelectorProps) {
   const [value, setValue] = React.useState(defaultValue)
 
   return (
@@ -23,19 +23,19 @@ export function TopPSelector({ defaultValue }: TopPSelectorProps) {
         <HoverCardTrigger asChild>
           <div className="grid gap-4">
             <div className="flex items-center justify-between">
-              <Label htmlFor="top-p">Top P</Label>
+              <Label htmlFor="maxlength">Maximum Length</Label>
               <span className="text-muted-foreground w-12 rounded-md border border-transparent px-2 py-0.5 text-right text-sm hover:border-border">
                 {value}
               </span>
             </div>
             <Slider
-              id="top-p"
-              max={1}
+              id="maxlength"
+              max={4000}
               value={value}
-              step={0.1}
+              step={10}
               onValueChange={setValue}
               className="[&_[role=slider]]:h-4 [&_[role=slider]]:w-4"
-              aria-label="Top P"
+              aria-label="Maximum Length"
             />
           </div>
         </HoverCardTrigger>
@@ -44,10 +44,12 @@ export function TopPSelector({ defaultValue }: TopPSelectorProps) {
           className="w-[260px] text-sm"
           side="left"
         >
-          Control diversity via nucleus sampling: 0.5 means half of all
-          likelihood-weighted options are considered.
+          The maximum number of tokens to generate. Requests can use up to
+          2,048 or 4,000 tokens, shared between prompt and completion. The
+          exact limit varies by model.
         </HoverCardContent>
       </HoverCard>
     </div>
   )
 }
+

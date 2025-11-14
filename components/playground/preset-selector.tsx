@@ -19,7 +19,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-import { Preset } from "../data/presets"
+import { Preset } from "@/data/presets"
 
 interface PresetSelectorProps {
   presets: readonly Preset[]
@@ -75,3 +75,4 @@ export function PresetSelector({ presets }: PresetSelectorProps) {
     </Popover>
   )
 }
+

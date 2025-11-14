@@ -18,17 +18,17 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import { siteConfig } from "@/config/site"
 
-import { CodeViewer } from "./components/code-viewer"
-import { MaxLengthSelector } from "./components/maxlength-selector"
-import { ModelSelector } from "./components/model-selector"
-import { PresetActions } from "./components/preset-actions"
-import { PresetSave } from "./components/preset-save"
-import { PresetSelector } from "./components/preset-selector"
-import { PresetShare } from "./components/preset-share"
-import { TemperatureSelector } from "./components/temperature-selector"
-import { TopPSelector } from "./components/top-p-selector"
-import { models, types } from "./data/models"
-import { presets } from "./data/presets"
+import { CodeViewer } from "@/components/playground/code-viewer"
+import { MaxLengthSelector } from "@/components/playground/maxlength-selector"
+import { ModelSelector } from "@/components/playground/model-selector"
+import { PresetActions } from "@/components/playground/preset-actions"
+import { PresetSave } from "@/components/playground/preset-save"
+import { PresetSelector } from "@/components/playground/preset-selector"
+import { PresetShare } from "@/components/playground/preset-share"
+import { TemperatureSelector } from "@/components/playground/temperature-selector"
+import { TopPSelector } from "@/components/playground/top-p-selector"
+import { models, types } from "@/data/models"
+import { presets } from "@/data/presets"
 
 export const metadata: Metadata = {
   title: "Playground",
