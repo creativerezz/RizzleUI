@@ -1,6 +1,7 @@
 import { streamText } from "ai"
 import { NextRequest } from "next/server"
 import { getLLMProvider } from "@/lib/llm-provider"
+import type { LanguageModel } from "ai"
 
 export async function POST(req: NextRequest) {
   try {
@@ -23,12 +24,12 @@ Please answer questions about this video transcript. If the question is not rela
     })
 
     const result = await streamText({
-      model: llm,
+      model: llm as unknown as LanguageModel,
       system: systemMessage,
       messages,
     })
 
-    return result.toDataStreamResponse()
+    return result.toTextStreamResponse()
   } catch (error) {
     console.error("Error in chat API:", error)
     

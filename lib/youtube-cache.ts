@@ -48,14 +48,15 @@ export function setCachedTranscript(
   metadata: unknown,
   transcript: string
 ): void {
+  const data: CachedData = {
+    videoId,
+    metadata,
+    transcript,
+    timestamp: Date.now(),
+    version: CACHE_VERSION,
+  }
+
   try {
-    const data: CachedData = {
-      videoId,
-      metadata,
-      transcript,
-      timestamp: Date.now(),
-      version: CACHE_VERSION,
-    }
     localStorage.setItem(`${CACHE_PREFIX}${videoId}`, JSON.stringify(data))
   } catch (error) {
     console.error("Error writing cache:", error)

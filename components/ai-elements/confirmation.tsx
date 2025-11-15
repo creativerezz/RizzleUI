@@ -96,8 +96,8 @@ export type ConfirmationRequestProps = {
 export const ConfirmationRequest = ({ children }: ConfirmationRequestProps) => {
   const { state } = useConfirmation();
 
-  // Only show when approval is requested
-  if (state !== "approval-requested") {
+  // Only show when input is available (approval request)
+  if (state !== "input-available") {
     return null;
   }
 
@@ -113,12 +113,10 @@ export const ConfirmationAccepted = ({
 }: ConfirmationAcceptedProps) => {
   const { approval, state } = useConfirmation();
 
-  // Only show when approved and in response states
+  // Only show when approved and output is available
   if (
     !approval?.approved ||
-    (state !== "approval-responded" &&
-      state !== "output-denied" &&
-      state !== "output-available")
+    state !== "output-available"
   ) {
     return null;
   }
@@ -135,12 +133,11 @@ export const ConfirmationRejected = ({
 }: ConfirmationRejectedProps) => {
   const { approval, state } = useConfirmation();
 
-  // Only show when rejected and in response states
+  // Only show when rejected and output is available or there's an error
   if (
     approval?.approved !== false ||
-    (state !== "approval-responded" &&
-      state !== "output-denied" &&
-      state !== "output-available")
+    (state !== "output-available" &&
+      state !== "output-error")
   ) {
     return null;
   }
@@ -156,8 +153,8 @@ export const ConfirmationActions = ({
 }: ConfirmationActionsProps) => {
   const { state } = useConfirmation();
 
-  // Only show when approval is requested
-  if (state !== "approval-requested") {
+  // Only show when input is available (approval request)
+  if (state !== "input-available") {
     return null;
   }
 

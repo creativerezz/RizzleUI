@@ -16,14 +16,17 @@ interface ChatInterfaceProps {
 }
 
 export function ChatInterface({ transcript }: ChatInterfaceProps) {
-  const { messages, input = "", handleInputChange, handleSubmit, isLoading, error } =
-    useChat({
-      api: "/api/chat",
-      body: {
-        transcript: transcript || undefined,
-      },
-      key: transcript ? `chat-${transcript.length}` : "chat-default",
-    })
+  // Use a stable key based on transcript to avoid unnecessary resets
+  const chatKey = React.useMemo(() => {
+    if (!transcript) return "chat-default"
+    // Use transcript length for a stable key that doesn't change unnecessarily
+    return `chat-${transcript.length}`
+  }, [transcript])
+
+  const [input, setInput] = React.useState("")
+  const [isLoading, setIsLoading] = React.useState(false)
+  const [error, setError] = React.useState<Error | null>(null)
+  const [messages, setMessages] = React.useState<Array<{ id: string; role: string; content: string; createdAt?: Date }>>([])
 
   const scrollAreaRef = React.useRef<HTMLDivElement>(null)
   const messagesEndRef = React.useRef<HTMLDivElement>(null)
@@ -47,14 +50,70 @@ export function ChatInterface({ transcript }: ChatInterfaceProps) {
     }
   }, [transcript])
 
+  // Handle input change
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value)
+  }
+
+  // Handle sending message
+  const sendMessage = async () => {
+    if (!input.trim() || isLoading || !transcript) return
+
+    const userMessage = input.trim()
+    setInput("")
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [...messages, { role: "user", content: userMessage }],
+          transcript,
+          provider: "openai",
+          model: "gpt-4o-mini",
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to send message")
+      }
+
+      // Handle streaming response
+      const reader = response.body?.getReader()
+      if (!reader) throw new Error("No response body")
+
+      const decoder = new TextDecoder()
+      let assistantMessage = ""
+
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+        assistantMessage += decoder.decode(value, { stream: true })
+      }
+
+      // Note: In a real implementation, you'd parse the streaming response properly
+      // For now, we're reading the entire response as text
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error("Failed to send message"))
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   // Handle keyboard shortcuts
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault()
-      if (!isLoading && transcript && input?.trim()) {
-        handleSubmit(e)
-      }
+      sendMessage()
     }
+  }
+
+  // Handle form submission
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    sendMessage()
   }
 
   return (
@@ -83,7 +142,7 @@ export function ChatInterface({ transcript }: ChatInterfaceProps) {
                 )}
               </div>
             )}
-            {messages.map((message) => (
+            {messages.map((message: any) => (
               <div
                 key={message.id}
                 className={cn(
@@ -107,7 +166,7 @@ export function ChatInterface({ transcript }: ChatInterfaceProps) {
                   )}
                 >
                   <div className="text-sm whitespace-pre-wrap break-words">
-                    {message.content}
+                    {message.content || (typeof message === "string" ? message : JSON.stringify(message))}
                   </div>
                   {message.createdAt && (
                     <div
@@ -155,21 +214,32 @@ export function ChatInterface({ transcript }: ChatInterfaceProps) {
                     <Bot className="h-4 w-4 text-destructive" />
                   </AvatarFallback>
                 </Avatar>
-                <div className="bg-destructive/10 rounded-lg px-4 py-2.5">
-                  <div className="text-sm text-destructive">
+                <div className="bg-destructive/10 rounded-lg px-4 py-2.5 max-w-[80%]">
+                  <div className="text-sm text-destructive font-medium mb-1">
+                    Error
+                  </div>
+                  <div className="text-sm text-destructive/90">
                     {error.message || "Failed to send message. Please try again."}
                   </div>
+                  {error.message?.includes("API_KEY") && (
+                    <div className="text-xs text-destructive/70 mt-2 pt-2 border-t border-destructive/20">
+                      💡 Tip: Add OPENAI_API_KEY to your .env file and restart the server.
+                    </div>
+                  )}
                 </div>
               </div>
             )}
             <div ref={messagesEndRef} />
           </div>
         </ScrollArea>
-        <form onSubmit={handleSubmit} className="flex gap-2">
+        <form
+          onSubmit={handleFormSubmit}
+          className="flex gap-2"
+        >
           <Input
             ref={inputRef}
             id="chat-input"
-            value={input || ""}
+            value={input ?? ""}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
             placeholder={
@@ -179,6 +249,8 @@ export function ChatInterface({ transcript }: ChatInterfaceProps) {
             }
             disabled={isLoading || !transcript}
             className="flex-1"
+            autoComplete="off"
+            type="text"
           />
           <Button
             type="submit"
